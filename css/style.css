@@ -1,0 +1,13 @@
+section{
+    display: flex;
+    justify-content: center;
+}
+
+.torso{
+    display:flex;
+}
+
+.guesses{
+    display: flex;
+    
+}
