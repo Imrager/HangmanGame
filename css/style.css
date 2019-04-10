@@ -9,5 +9,15 @@ section{
 
 .guesses{
     display: flex;
-    
+
+}
+.legs{
+    display: flex;
+}
+article{
+    display: flex;
+    justify-content: center;
+}
+.letterDiv{
+    padding: 10px;
 }
