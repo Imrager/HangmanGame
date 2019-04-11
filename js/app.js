@@ -20,7 +20,7 @@ $(document).ready(function () {
         $('#enter').css('display', 'inline')
         // create 26 divs for each letter in the alphabet
         for (i = 0; i < letters.length; i++) {
-            $('<div class="alphabet"></div>').text(letters[i]).appendTo('.guesses')
+            $('<p class="alphabet"></p>').text(letters[i]).appendTo('.guesses')
         }
         $('#playGame').css('display', 'none')
         $('#newGame').css('display', 'inline')
@@ -29,9 +29,9 @@ $(document).ready(function () {
         location.reload()
     })
     // how to also press enter to submit answer https://api.jquery.com/keypress/
-    $('input').keypress(function (){
-        $('#enter').click()
-    })
+    // $('input').keypress(function (){
+    //     $('#enter').click()
+    // })
     $('#enter').click(function enter() {
         letterGuess = $('input').val()
         for (let i = 0; i < hangmanWord.length; i++) {
@@ -39,12 +39,11 @@ $(document).ready(function () {
             if (hangmanWord[i].toLowerCase() === letterGuess.toLowerCase()) {
                 $('.letterDiv')[i].innerText = letterGuess
             }
+            if($('input').val() === $('p')[i].innerText){
+                $('p')[i]
+            }
         }
-        // for(let i =0; i < letters.length; i++){
-        //     if($('.alphabet')[i].innerText === letterGuess){
-        //         $('.alphabet')[i].css('background-color', 'grey')
-        //     }
-        // }
+        
         // changing image source https://stackoverflow.com/questions/554273/changing-the-image-source-using-jquery
         if(hangmanWord.length = 3){if ($('.letterDiv')[0].innerText === letterGuess ||
         $('.letterDiv')[1].innerText === letterGuess ||
@@ -59,6 +58,8 @@ $(document).ready(function () {
             hangmanImages.shift() && $('img').attr('src', hangmanImages[0])
         }}
         
+        // when that last image of a full hangman pops up they won
+        $('input').val('') 
         if(($('.letterDiv')[0].innerText === hangmanWord[0].toLowerCase()) && 
         ($('.letterDiv')[1].innerText === hangmanWord[1]) && 
         ($('.letterDiv')[2].innerText === hangmanWord[2]) &&
@@ -68,8 +69,9 @@ $(document).ready(function () {
         {
             alert('you won!')
         }
-        if($('img').attr('src') === hangmanWord[hangmanWord.length - 1]){
-            alert('you lose!')
+        if($('img')[hangmanImages.length - 1]){
+            alert('you lose')
         }
+        
     })
 })
