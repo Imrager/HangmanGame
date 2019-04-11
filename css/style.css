@@ -9,6 +9,7 @@ section{
 
 .guesses{
     display: flex;
+    height: 5vh;
 
 }
 .legs{
@@ -20,4 +21,13 @@ article{
 }
 .letterDiv{
     padding: 10px;
+}
+.alphabet{
+    margin: 2px;
+}
+#newGame{
+    display:none;
+}
+input{
+    display: none;
 }
