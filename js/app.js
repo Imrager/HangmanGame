@@ -3,13 +3,12 @@
 
 // function randomWord (){hangmanWord[Math.floor(Math.random() * 4) + 1]}
 //  random number from https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
-let hangmanWord = "poo"
+let hangmanWord = "higher"
 let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 let letterGuess = $('input').val()
 let correctLetter = []
 let hangmanImages = ['images/Hangman Pic/hangman base.png','images/Hangman Pic/hangmanHead.png', 'images/Hangman Pic/hangmanBody.png','images/Hangman Pic/hangmanNorightArm .png','images/Hangman Pic/hangmanNoLegs.png','images/Hangman Pic/hangmanNoRightLeg.png', 'images/Hangman Pic/hangmanLose.png']
 $(document).ready(function () {
-    console.log($('input').val())
     // When click new game adds empty letter placement 
     $('#playGame').click(function () {
         // create div with word length
@@ -29,8 +28,11 @@ $(document).ready(function () {
     $('#newGame').click(function () {
         location.reload()
     })
-
-    $('#enter').click(function () {
+    // how to also press enter to submit answer https://api.jquery.com/keypress/
+    $('input').keypress(function (){
+        $('#enter').click()
+    })
+    $('#enter').click(function enter() {
         letterGuess = $('input').val()
         for (let i = 0; i < hangmanWord.length; i++) {
 
@@ -38,15 +40,18 @@ $(document).ready(function () {
                 $('.letterDiv')[i].innerText = letterGuess
             }
         }
-        for(let i =0; i < letters.length; i++){
-            if($('.alphabet')[i] === letterGuess){
-                
-            }
-        }
+        // for(let i =0; i < letters.length; i++){
+        //     if($('.alphabet')[i].innerText === letterGuess){
+        //         $('.alphabet')[i].css('background-color', 'grey')
+        //     }
+        // }
         // changing image source https://stackoverflow.com/questions/554273/changing-the-image-source-using-jquery
         if(hangmanWord.length = 3){if ($('.letterDiv')[0].innerText === letterGuess ||
         $('.letterDiv')[1].innerText === letterGuess ||
-        $('.letterDiv')[2].innerText === letterGuess 
+        $('.letterDiv')[2].innerText === letterGuess ||
+        $('.letterDiv')[3].innerText === letterGuess ||
+        $('.letterDiv')[4].innerText === letterGuess ||
+        $('.letterDiv')[5].innerText === letterGuess 
         ){
             $('img').attr('src', hangmanImages[0]) 
         }
@@ -56,7 +61,11 @@ $(document).ready(function () {
         
         if(($('.letterDiv')[0].innerText === hangmanWord[0].toLowerCase()) && 
         ($('.letterDiv')[1].innerText === hangmanWord[1]) && 
-        ($('.letterDiv')[2].innerText === hangmanWord[2])){
+        ($('.letterDiv')[2].innerText === hangmanWord[2]) &&
+        ($('.letterDiv')[3].innerText === hangmanWord[3]) &&
+        ($('.letterDiv')[4].innerText === hangmanWord[4]) &&
+        ($('.letterDiv')[5].innerText === hangmanWord[5]))
+        {
             alert('you won!')
         }
         if($('img').attr('src') === hangmanWord[hangmanWord.length - 1]){
