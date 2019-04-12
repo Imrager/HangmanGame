@@ -34,14 +34,18 @@ $(document).ready(function () {
     // })
     $('#enter').click(function enter() {
         letterGuess = $('input').val()
+        // checks each letter of the hangman word
         for (let i = 0; i < hangmanWord.length; i++) {
 
             if (hangmanWord[i].toLowerCase() === letterGuess.toLowerCase()) {
                 $('.letterDiv')[i].innerText = letterGuess
             }
+        }
+        //  compares input to letter divs
+        for(let i = 0; i < 26; i++){
             if($('input').val() === $('p')[i].innerText){
-                $('p')[i]
-            }
+            $($('p')[i]).css('color','grey')
+        }
         }
         
         // changing image source https://stackoverflow.com/questions/554273/changing-the-image-source-using-jquery
