@@ -3,11 +3,22 @@
 
 // function randomWord (){hangmanWord[Math.floor(Math.random() * 4) + 1]}
 //  random number from https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
-let hangmanWord = "higher"
+
+let hangmanWords = {
+    hiphop: 'Hint: Number one genre of music',
+    netflix: 'Hint: Video streaming service',
+    amazon: 'Hint: Online shopping and delivery',
+    start:  'opposite of finish'
+}
+// random number https://www.w3schools.com/jsref/jsref_random.asp
+let hangmanWord = Object.keys(hangmanWords)[Math.floor((Math.random() * 4))]
+let hint = hangmanWords.hangmanWord
+console.log()
+console.log(hint)
 let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 let letterGuess = $('input').val()
 let correctLetter = []
-let hangmanImages = ['images/Hangman Pic/hangman base.png','images/Hangman Pic/hangmanHead.png', 'images/Hangman Pic/hangmanBody.png','images/Hangman Pic/hangmanNorightArm .png','images/Hangman Pic/hangmanNoLegs.png','images/Hangman Pic/hangmanNoRightLeg.png', 'images/Hangman Pic/hangmanLose.png']
+let hangmanImages = ['images/Hangman Pic/hangman base.png', 'images/Hangman Pic/hangmanHead.png', 'images/Hangman Pic/hangmanBody.png', 'images/Hangman Pic/hangmanNorightArm .png', 'images/Hangman Pic/hangmanNoLegs.png', 'images/Hangman Pic/hangmanNoRightLeg.png', 'images/Hangman Pic/hangmanLose.png']
 $(document).ready(function () {
     // When click new game adds empty letter placement 
     $('#playGame').click(function () {
@@ -29,9 +40,11 @@ $(document).ready(function () {
         location.reload()
     })
     // how to also press enter to submit answer https://api.jquery.com/keypress/
-    // $('input').keypress(function (){
-    //     $('#enter').click()
-    // })
+    $(document).on('keypress', function (e) {
+        if (e.which == 13) {
+            $('#enter').click()
+        }
+    });
     $('#enter').click(function enter() {
         letterGuess = $('input').val()
         // checks each letter of the hangman word
@@ -42,40 +55,75 @@ $(document).ready(function () {
             }
         }
         //  compares input to letter divs
-        for(let i = 0; i < 26; i++){
-            if($('input').val() === $('p')[i].innerText){
-            $($('p')[i]).css('color','grey')
+        for (let i = 0; i < 26; i++) {
+            if ($('input').val() === $('p')[i].innerText) {
+                $($('p')[i]).css('color', 'lightgrey')
+            }
         }
+        for(let i = 0; i< 4; i++){
+
         }
         
+
         // changing image source https://stackoverflow.com/questions/554273/changing-the-image-source-using-jquery
-        if(hangmanWord.length = 3){if ($('.letterDiv')[0].innerText === letterGuess ||
-        $('.letterDiv')[1].innerText === letterGuess ||
-        $('.letterDiv')[2].innerText === letterGuess ||
-        $('.letterDiv')[3].innerText === letterGuess ||
-        $('.letterDiv')[4].innerText === letterGuess ||
-        $('.letterDiv')[5].innerText === letterGuess 
-        ){
-            $('img').attr('src', hangmanImages[0]) 
+        // compares 6 letter words to letterguess if wrong adds image to show that its wrong
+        if (hangmanWord.length === 6) {
+            if ($('.letterDiv')[0].innerText === letterGuess ||
+                $('.letterDiv')[1].innerText === letterGuess ||
+                $('.letterDiv')[2].innerText === letterGuess ||
+                $('.letterDiv')[3].innerText === letterGuess ||
+                $('.letterDiv')[4].innerText === letterGuess ||
+                $('.letterDiv')[5].innerText === letterGuess
+            ) {
+                $('.imgSwitch').attr('src', hangmanImages[0])
+            }
+            else {
+                hangmanImages.shift() && $('.imgSwitch').attr('src', hangmanImages[0])
+            }
         }
-        else{
-            hangmanImages.shift() && $('img').attr('src', hangmanImages[0])
-        }}
-        
+        // compares 5 letter words to letterguess if wrong adds image to show that its wrong
+        else if (hangmanWord.length === 5) {
+            if ($('.letterDiv')[0].innerText === letterGuess ||
+                $('.letterDiv')[1].innerText === letterGuess ||
+                $('.letterDiv')[2].innerText === letterGuess ||
+                $('.letterDiv')[3].innerText === letterGuess ||
+                $('.letterDiv')[4].innerText === letterGuess
+            ) {
+                $('.imgSwitch').attr('src', hangmanImages[0])
+            }
+            else {
+                hangmanImages.shift() && $('.imgSwitch').attr('src', hangmanImages[0])
+            }
+        }
+
         // when that last image of a full hangman pops up they won
-        $('input').val('') 
-        if(($('.letterDiv')[0].innerText === hangmanWord[0].toLowerCase()) && 
-        ($('.letterDiv')[1].innerText === hangmanWord[1]) && 
-        ($('.letterDiv')[2].innerText === hangmanWord[2]) &&
-        ($('.letterDiv')[3].innerText === hangmanWord[3]) &&
-        ($('.letterDiv')[4].innerText === hangmanWord[4]) &&
-        ($('.letterDiv')[5].innerText === hangmanWord[5]))
-        {
-            alert('you won!')
+        $('input').val('')
+        // six letter word you won
+        if (hangmanWord.length === 6) {
+            if (($('.letterDiv')[0].innerText === hangmanWord[0]) &&
+                ($('.letterDiv')[1].innerText === hangmanWord[1]) &&
+                ($('.letterDiv')[2].innerText === hangmanWord[2]) &&
+                ($('.letterDiv')[3].innerText === hangmanWord[3]) &&
+                ($('.letterDiv')[4].innerText === hangmanWord[4]) &&
+                ($('.letterDiv')[5].innerText === hangmanWord[5])) {
+                alert('you won!')
+            }
         }
-        if($('img')[hangmanImages.length - 1]){
+        //    five letter word you won
+        else if (hangmanWord.length === 5) {
+            if (($('.letterDiv')[0].innerText === hangmanWord[0]) &&
+                ($('.letterDiv')[1].innerText === hangmanWord[1]) &&
+                ($('.letterDiv')[2].innerText === hangmanWord[2]) &&
+                ($('.letterDiv')[3].innerText === hangmanWord[3]) &&
+                ($('.letterDiv')[4].innerText === hangmanWord[4])) {
+                alert('you won!')
+            }
+        }
+        
+//  when last image show alert you lose
+        if ($('.imgSwitch')[hangmanImages.length - 1]) {
             alert('you lose')
         }
-        
+
     })
 })

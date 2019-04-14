@@ -12,19 +12,25 @@
 </head>
 
 <body>
-    <h1>Hangman</h1>
+    <h1>David's Hangman</h1>
     <button id="playGame">Play Game</button>
+
+    <img class="doodleS" src="images/doodle pics/s.png">
+    <img class="dstar" id="dstar2" src="images/doodle pics/star.png">
     <button id="newGame">New Game</button>
     <section>
         <div class="hang">
-            <img height='200px' src="images/Hangman Pic/hangman base.png">
-            </div>
+            <img class="imgSwitch" height='200px' src="images/Hangman Pic/hangman base.png">
+        </div>
         </div>
     </section>
     <article>
     </article>
-    <input placeholder="Enter Letter"><button id='enter'>Enter</button>
+    <button id='enter'>Enter Letter</button>
+    <br>
+    <input placeholder="Letter" maxlength="1">
     <div class="guesses"></div>
+    <div class="hint"></div>
 </body>
 
 </html>

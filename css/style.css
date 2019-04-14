@@ -1,11 +1,23 @@
+/* handwriting font */
+@font-face{
+    font-family: handwrite;
+    /* font from https://www.dafont.com/dicishandwrite.font */
+    src:url(../css/Font/Dicis\ Handwrite.ttf);
+}
 body{
-    background: url(../images/paperbackground.png) ;
+    /* background image from http://www.pptbackgrounds.org/lined-paper-backgrounds.html */
+    background: url(../images/paperbackground.jpg) ;
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
+    font-family: handwrite;
+    text-align: center;
 }
 section{
     display: flex;
     justify-content: center;
+}
+h1{
+    font-size: 225%;
 }
 
 .torso{
@@ -14,39 +26,82 @@ section{
 /* The letter divs are created here */
 .guesses{
     display: flex;
-    height: 5vh;
-    
+    flex-wrap: wrap;
+    width: 267px;
+    height: 20vh;
+    margin-left:15%;
+    margin-top: 1%;
 }
 .alphabet{
     margin: 2px;
-    background-color: red;
     height: 20px;
     width: 20px;
     text-align: center;
+    font-size: 200%;
 }
-.alphabetGuess{
-    margin: 2px;
-    background-color: red;
-    height: 20px;
-    width: 20px;
-    text-align: center;
-}
+
 .legs{
     display: flex;
 }
 article{
     display: flex;
     justify-content: center;
+    margin-right: 10%;
 }
 .letterDiv{
+    
+    margin-top: 2%;
     padding: 10px;
+    margin-left: 5px;
+    font-size: 200%;
 }
 #newGame{
     display:none;
+    margin-right: 60%;
+    margin-top: 1.5%;
+}
+#newGame:hover {
+    color: lightgrey;
+}
+#playGame{
+    margin-right: 60%;
+    margin-top: 1.5%;
+}
+#playGame:hover {
+    color: lightgrey;
 }
 input{
     display: none;
+    border: solid black 2px;
+    border-radius: 5px;
+    height: 30px;
+    width: 40px;
+    
 }
 #enter{
+    margin-top: 1%;
     display: none;
+}
+button{
+    border: none;
+    font-family: handwrite;
+    font-Size: 200%;
+    cursor: pointer;
+    background: none;
+}
+.dstar{
+    height: 125px;
+}
+#dstar1{
+    float: right;
+    margin-right: 2%;
+}
+#dstar2{
+    float: left;
+    margin-top: 10%;
+}
+.doodleS{
+    float: right;
+    height: 200px;
+    transform: rotate(-30deg);
 }
