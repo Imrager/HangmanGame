@@ -8,23 +8,31 @@ let hangmanWords = {
     hiphop: 'Hint: Number one genre of music',
     netflix: 'Hint: Video streaming service',
     amazon: 'Hint: Online shopping and delivery',
-    start:  'Hint: opposite of finish'
+    start: 'Hint: opposite of finish',
+    cloud: 'Hint: creates rain',
+    spoon: 'Hint: utensil for soup'
 }
 // random number https://www.w3schools.com/jsref/jsref_random.asp
-let hangmanWord = Object.keys(hangmanWords)[Math.floor((Math.random() * 4))]
+let hangmanWord = Object.keys(hangmanWords)[Math.floor((Math.random() * 6))]
 console.log(hangmanWord)
-let hint = function(){
-    if(hangmanWord === 'hiphop'){
+let hint = function () {
+    if (hangmanWord === 'hiphop') {
         return hangmanWords.hiphop
     }
-    else if(hangmanWord === 'netflix'){
+    else if (hangmanWord === 'netflix') {
         return hangmanWords.netflix
     }
-    else if(hangmanWord === 'amazon'){
+    else if (hangmanWord === 'amazon') {
         return hangmanWords.amazon
     }
-    else if(hangmanWord === 'start'){
+    else if (hangmanWord === 'start') {
         return hangmanWords.start
+    }
+    else if (hangmanWord === 'cloud') {
+        return hangmanWords.cloud
+    }
+    else if (hangmanWord === 'spoon') {
+        return hangmanWords.spoon
     }
 }
 console.log(hint())
@@ -45,17 +53,15 @@ $(document).ready(function () {
         $('#enter').css('display', 'inline')
         // create 26 divs for each letter in the alphabet
         for (i = 0; i < letters.length; i++) {
-            $('<p class="alphabet"></p>').text(letters[i]).appendTo('.guesses')   
+            $('<p class="alphabet"></p>').text(letters[i]).appendTo('.guesses')
         }
         $('#playGame').css('display', 'none')
         $('#newGame').css('display', 'inline')
         $('.hint').text(hint())
         console.log($('p')[0].innerText)
+        
     })
-    // ('p')[0].click(function(){
-    //     alert('hey')
-    //     $('input').val($('p')[0].innerText)
-    // })
+   
     $('#newGame').click(function () {
         location.reload()
     })
@@ -136,9 +142,9 @@ $(document).ready(function () {
                 ($('.letterDiv')[2].innerText === hangmanWord[2]) &&
                 ($('.letterDiv')[3].innerText === hangmanWord[3]) &&
                 ($('.letterDiv')[4].innerText === hangmanWord[4]) &&
-                ($('.letterDiv')[5].innerText === hangmanWord[5])&&
+                ($('.letterDiv')[5].innerText === hangmanWord[5]) &&
                 ($('.letterDiv')[5].innerText === hangmanWord[6])) {
-                alert('you won!')
+                $('#wonModal').css('display', 'inline')
             }
         }
         // six letter word you won
@@ -149,7 +155,7 @@ $(document).ready(function () {
                 ($('.letterDiv')[3].innerText === hangmanWord[3]) &&
                 ($('.letterDiv')[4].innerText === hangmanWord[4]) &&
                 ($('.letterDiv')[5].innerText === hangmanWord[5])) {
-                alert('you won!')
+                $('#wonModal').css('display', 'inline')
             }
         }
         //    five letter word you won
@@ -159,14 +165,16 @@ $(document).ready(function () {
                 ($('.letterDiv')[2].innerText === hangmanWord[2]) &&
                 ($('.letterDiv')[3].innerText === hangmanWord[3]) &&
                 ($('.letterDiv')[4].innerText === hangmanWord[4])) {
-                alert('you won!')
+                $('#wonModal').css('display', 'inline')
             }
         }
-        
-//  when last image show alert you lose
-        if ($('.imgSwitch')[hangmanImages.length - 1]) {
-            alert('you lose')
-        }
 
+        //  when last image show alert you lose
+        if ($('.imgSwitch')[hangmanImages.length - 1]) {
+            $('#loseModal').css('display', 'inline')
+        }
+    })
+    $('.newGameModal').click(function(){
+        location.reload()
     })
 })
