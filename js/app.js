@@ -143,7 +143,7 @@ $(document).ready(function () {
                 ($('.letterDiv')[3].innerText === hangmanWord[3]) &&
                 ($('.letterDiv')[4].innerText === hangmanWord[4]) &&
                 ($('.letterDiv')[5].innerText === hangmanWord[5]) &&
-                ($('.letterDiv')[5].innerText === hangmanWord[6])) {
+                ($('.letterDiv')[6].innerText === hangmanWord[6])) {
                 $('#wonModal').css('display', 'inline')
             }
         }
