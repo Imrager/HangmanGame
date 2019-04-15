@@ -59,9 +59,9 @@ $(document).ready(function () {
         $('#newGame').css('display', 'inline')
         $('.hint').text(hint())
         console.log($('p')[0].innerText)
-        
+
     })
-   
+
     $('#newGame').click(function () {
         location.reload()
     })
@@ -136,7 +136,7 @@ $(document).ready(function () {
         // when that last image of a full hangman pops up they won
         $('input').val('')
         // seven letter word you won
-        if (hangmanWord.length === 6) {
+        if (hangmanWord.length === 7) {
             if (($('.letterDiv')[0].innerText === hangmanWord[0]) &&
                 ($('.letterDiv')[1].innerText === hangmanWord[1]) &&
                 ($('.letterDiv')[2].innerText === hangmanWord[2]) &&
@@ -174,7 +174,7 @@ $(document).ready(function () {
             $('#loseModal').css('display', 'inline')
         }
     })
-    $('.newGameModal').click(function(){
+    $('.newGameModal').click(function () {
         location.reload()
     })
 })
