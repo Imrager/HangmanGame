@@ -22,5 +22,3 @@ A random word is generated with a hint.  The player then guesses what each lette
 ![wireframe](https://github.com/Imrager/HangmanGame/blob/master/images/Wireframe/hangmanWF.png)
 
 ![whiteboard](https://github.com/Imrager/HangmanGame/blob/master/images/Whiteboarding/flowChart.png)
-
-![reference-image](https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwib9LOS09LhAhUPd98KHRv1D2QQjRx6BAgBEAU&url=https%3A%2F%2Fwww.appannie.com%2Fen%2Fapps%2Fgoogle-play%2Fapp%2Fcom.virtuesoft.android.hangmanpaid%2F&psig=AOvVaw3G7J-Wf7xeHYzdC1ttPscm&ust=1555436608340032)
